@@ -1,9 +1,3 @@
-# Voice‑Talk OpenAI (Node.js)
-
-A tiny voice‑assistant backend that turns microphone input into a GPT‑4o chat and speaks the answer back.
-
----
-
 ## Quick Start
 
 1. **Install dependencies**
