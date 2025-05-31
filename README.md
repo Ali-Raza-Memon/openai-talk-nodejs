@@ -1,3 +1,9 @@
+# Voice‑Talk OpenAI (Node.js)
+
+A tiny voice‑assistant backend that turns microphone input into a GPT‑4o chat and speaks the answer back.
+
+---
+
 ## Quick Start
 
 1. **Install dependencies**
@@ -9,7 +15,7 @@
 
    ```dotenv
    PORT=5010
-   MONGO_DB_NAME=<db-name>
+   MONGO_DB_NAME=openai-talk
    MONGO_HOST=localhost
    MONGO_PORT=27017
 
@@ -23,4 +29,8 @@
 
 > Requires Node 18+ and a running MongoDB instance.
 
-That’s it—open your client app or hit the socket endpoint to start chatting!
+That’s it—open your client app or hit the socket endpoint below to start chatting!
+
+```text
+WebSocket endpoint: ws://localhost:5010/chat
+```
