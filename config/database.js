@@ -1,19 +1,32 @@
 const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
+
+const {
+    MONGO_DB_NAME,
+    MONGO_HOST,
+    MONGO_PORT
+} = process.env;
+
+if (!MONGO_DB_NAME) {
+    throw new Error("MONGO_DB_NAME is missing in .env");
+}
+
+const mongoUri = `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB_NAME}`;
 
 const connectDatabase = () => {
-    console.log("MongoDB URL:", process.env.MONGO_URL);
+    console.log("MongoDB URI:", mongoUri);
+
     mongoose
-        .connect(process.env.MONGO_URL, {
+        .connect(mongoUri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        .then((data) => {
-            console.log(`MongoDB connected with server: ${data.connection.host}`);
-        })
-        .catch((err) => {
-            console.error("Database connection error:", err.message);
-        });
+        .then(({ connection }) =>
+            console.log(`MongoDB connected on host: ${connection.host}`)
+        )
+        .catch((err) =>
+            console.error("Database connection error:", err.message)
+        );
 };
 
 module.exports = connectDatabase;
