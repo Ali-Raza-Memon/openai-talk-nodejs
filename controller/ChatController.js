@@ -12,11 +12,11 @@ exports.chatAudioProcessing = async (socket, audioBuffer, language) => {
         const voiceResponse = await convertToSpeech(gptResponse);
         socket.emit("chat-response", {
             transcription: transcriptionText,
-            chatGptResponse: gptResponse,
+            textResponse: gptResponse,
             voiceResponse
         });
 
-        console.log("Full GPT Response Sent!");
+        console.log("Full Response Sent!");
     } catch (error) {
         console.error(" Error in handleAudioProcessing:", error.message || error);
         socket.emit("error", { error: "Internal Server Error." });
